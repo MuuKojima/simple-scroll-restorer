@@ -20,13 +20,9 @@ app.js
 ```
 import ScrollRestoreManager from 'simple-scroll-restorer';
 
-...
-
 mount() {
   ScrollRestoreManager.observe();
 }
-
-...
 
 unmount() {
   ScrollRestoreManager.unobserve();
@@ -38,8 +34,6 @@ unmount() {
 router.js
 ```
 import ScrollRestoreManager from 'simple-scroll-restorer';
-
-...
 
 onAfter() {
   const savedPosisiton = ScrollRestoreManager.getSavedPostion();
