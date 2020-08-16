@@ -3,13 +3,15 @@ const DEFAULT_INTERVAL = 100;
 const debounce = (callback, interval) => {
   let timerId;
   return (...args) => {
-    const context = this;
     clearTimeout(timerId);
-    timerId = setTimeout(() => callback.apply(context, args), interval);
+    timerId = setTimeout(() => callback.apply(this, args), interval);
   };
 };
 
 class ScrollRestoreManager {
+  private options: any;
+  private handleScroll: any;
+
   constructor() {
     this.options = null;
     this.handleScroll = null;
@@ -26,7 +28,7 @@ class ScrollRestoreManager {
     const history = {
       postion: {x: window.pageXOffset, y: window.pageYOffset}
     };
-    window.history.replaceState(history, null, window.location);
+    window.history.replaceState(history, null, String(window.location));
   }
 
   getSavedPostion() {
@@ -58,8 +60,10 @@ class ScrollRestoreManager {
   }
 
   unobserve() {
+    // @see: https://github.com/microsoft/TypeScript/issues/32912#issuecomment-522142969
+    const options: AddEventListenerOptions & EventListenerOptions = { passive: true };
     !!this.handleScroll &&
-      window.removeEventListener('scroll', this.handleScroll, {passive: true});
+      window.removeEventListener('scroll', this.handleScroll, options);
   }
 }
 
