@@ -8,7 +8,7 @@ simple scroll restore for keeping scroll position
 ## Installation
 
 ```
-$ npm install --save simple-state-management
+$ npm install --save simple-scroll-restorer
 ```
 
 ## Demo
