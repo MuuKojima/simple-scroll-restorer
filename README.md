@@ -11,10 +11,6 @@ simple scroll restore for keeping scroll position
 $ npm install --save simple-scroll-restorer
 ```
 
-## Demo
-
-TODO:
-
 ## Usage
 
 ### Initialize library
@@ -47,3 +43,7 @@ onAfter() {
   window.scrollTo(savedPosisiton.x, savedPosisiton.y);
 }
 ```
+
+## Demo
+
+TODO:
