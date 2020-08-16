@@ -16,7 +16,9 @@
     "scroll restore",
     "scroll keep",
     "postion",
-    "scroll postion"
+    "scroll postion",
+    "single page application",
+    "spa"
   ],
   "scripts": {
     "type-check": "tsc --noEmit",

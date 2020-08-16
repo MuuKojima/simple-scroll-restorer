@@ -9,6 +9,7 @@ const debounce = (callback, interval) => {
 };
 
 class ScrollRestoreManager {
+  // TODO: Fix any
   private options: any;
   private handleScroll: any;
 
