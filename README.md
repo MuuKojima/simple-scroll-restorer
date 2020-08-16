@@ -15,7 +15,7 @@ $ npm install --save simple-scroll-restorer
 
 ### Initialize library
 
-app.js
+Your `app.js` somthing like this
 ```
 import ScrollRestoreManager from 'simple-scroll-restorer';
 
@@ -30,7 +30,7 @@ unmount() {
 
 ### Restore scroll position
 
-router.js
+Your `router.js` somthing like this 
 ```
 import ScrollRestoreManager from 'simple-scroll-restorer';
 
