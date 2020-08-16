@@ -1,5 +1,8 @@
 # Simple Scroll Restorer
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![npm version](https://badge.fury.io/js/simple-scroll-restorer.svg)](https://badge.fury.io/js/simple-scroll-restorer)
+
 simple scroll restore for keeping scroll position
 
 ## Installation
