@@ -13,7 +13,14 @@ $ npm install --save simple-scroll-restorer
 
 ## Demo
 
-TODO:
+https://simple-scroll-restorer.netlify.app/
+
+```
+$ cd demo
+$ npm install .
+$ npm run start
+-> localhost:8080
+```
 
 ## Real Application Demo
 
