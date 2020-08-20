@@ -1,3 +1,7 @@
+interface Options {
+  interval: number
+}
+
 const DEFAULT_INTERVAL = 100;
 
 const debounce = (callback, interval) => {
@@ -9,9 +13,8 @@ const debounce = (callback, interval) => {
 };
 
 class ScrollRestoreManager {
-  // TODO: Fix any
-  private options: any;
-  private handleScroll: any;
+  private options: Options;
+  private handleScroll: () => void;
 
   constructor() {
     this.options = null;
@@ -19,7 +22,7 @@ class ScrollRestoreManager {
     this.init();
   }
 
-  init() {
+  private init() {
     if ('scrollRestoration' in window.history) {
       window.history.scrollRestoration = 'manual';
     }
@@ -32,14 +35,14 @@ class ScrollRestoreManager {
     window.history.replaceState(history, null, String(window.location));
   }
 
-  getSavedPostion() {
+  getSavedPostion(): () => number | null {
     if (!window.history || !window.history.state) {
-      return;
+      return null;
     }
     return window.history.state.postion;
   }
 
-  observe(options) {
+  observe(options: Options) {
     this.options = Object.assign(
       {
         interval: DEFAULT_INTERVAL
