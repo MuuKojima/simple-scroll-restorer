@@ -140,11 +140,7 @@ export default class ListPage extends BasePage {
   draw() {
     render(
       html`
-        <style>
-          .item {
-
-          }
-        </style>
+        <h1>List Page</h1>
         <div>
           ${this.list.map((item) => html`
             <div id=${item.id} class="item" @click=${this.handlelClick}>
