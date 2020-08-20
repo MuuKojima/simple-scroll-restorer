@@ -15,6 +15,8 @@ $ npm install --save simple-scroll-restorer
 
 https://simple-scroll-restorer.netlify.app/
 
+<img width="300" src="https://raw.githubusercontent.com/MuuKojima/simple-scroll-restorer/develop/art/demo.gif">
+
 ```
 $ cd demo
 $ npm install .
