@@ -11,6 +11,15 @@ simple scroll restoration for keeping scroll position
 $ npm install --save simple-scroll-restorer
 ```
 
+## Demo
+
+TODO:
+
+## Real Application Demo
+
+https://hostile-architecture.org/
+
+
 ## Usage
 
 ### Initialize library
@@ -30,7 +39,7 @@ unmount() {
 
 ### Restore scroll position
 
-Your `router.js` somthing like this 
+Your `router.js` somthing like this
 ```
 import ScrollRestoreManager from 'simple-scroll-restorer';
 
@@ -43,11 +52,3 @@ onAfter() {
   window.scrollTo(savedPosisiton.x, savedPosisiton.y);
 }
 ```
-
-## Demo
-
-TODO:
-
-## Real WebService Demo
-
-https://hostile-architecture.org/
