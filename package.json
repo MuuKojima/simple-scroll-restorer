@@ -1,11 +1,45 @@
 {
   "name": "simple-scroll-restorer",
-  "version": "0.0.1",
-  "description": "simple scroll restore for keeping scroll postion",
-  "main": "./src/index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "description": "simple scroll restore for keeping scroll position",
+  "version": "1.0.2",
   "author": "muukojima",
-  "license": "MIT"
+  "license": "MIT",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MuuKojima/simple-scroll-restorer.git"
+  },
+  "keywords": [
+    "scroll-keep",
+    "scroll-restore",
+    "scroll restore",
+    "scroll keep",
+    "postion",
+    "scroll postion",
+    "single page application",
+    "spa"
+  ],
+  "scripts": {
+    "type-check": "tsc --noEmit",
+    "clean": "rm -rf lib",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build:js": "rollup -c",
+    "build": "npm run lint && npm run clean && npm run build:types && npm run build:js",
+    "lint": "eslint . --ext .ts"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.11.1",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-typescript": "^7.10.4",
+    "@rollup/plugin-babel": "^5.1.0",
+    "@typescript-eslint/eslint-plugin": "^3.8.0",
+    "@typescript-eslint/parser": "^3.8.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.6.0",
+    "rollup": "^2.23.1",
+    "typescript": "^3.9.7"
+  }
 }
