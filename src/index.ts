@@ -4,7 +4,7 @@ interface Options {
 const DEFAULT_INTERVAL = 100;
 const debounce = (callback: (args: any[], interval: number) => void, interval: number) => {
   let timerId: number;
-  return (...args) => {
+  return (...args: any[]) => {
     clearTimeout(timerId);
     timerId = setTimeout(() => callback(args, interval));
   };
