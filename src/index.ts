@@ -1,47 +1,52 @@
 interface Options {
   interval: number
 }
-
 const DEFAULT_INTERVAL = 100;
-
-const debounce = (callback, interval) => {
-  let timerId;
+const debounce = (callback: (args: any[], interval: number) => void, interval: number) => {
+  let timerId: number;
   return (...args) => {
     clearTimeout(timerId);
-    timerId = setTimeout(() => callback.apply(this, args), interval);
+    timerId = setTimeout(() => callback(args, interval));
   };
 };
-
 class ScrollRestoreManager {
   private options: Options;
   private handleScroll: () => void;
-
+  private isTick: boolean;
   constructor() {
-    this.options = null;
-    this.handleScroll = null;
+    this.options = {
+      interval: 0
+    };
+    this.isTick = false;
+    this.handleScroll = debounce(() => {
+      if (this.isTick) {
+        return;
+      }
+      this.isTick = true;
+      window.requestAnimationFrame(() => {
+        this.savePostion();
+        this.isTick = false;
+      });
+    }, this.options.interval);
     this.init();
   }
-
   private init() {
     if ('scrollRestoration' in window.history) {
       window.history.scrollRestoration = 'manual';
     }
   }
-
   savePostion() {
     const history = {
       postion: {x: window.pageXOffset, y: window.pageYOffset}
     };
-    window.history.replaceState(history, null, String(window.location));
+    window.history.replaceState(history, '', String(window.location));
   }
-
-  getSavedPostion(): () => number | null {
+  getSavedPostion(): (() => number) | null {
     if (!window.history || !window.history.state) {
       return null;
     }
     return window.history.state.postion;
   }
-
   observe(options: Options) {
     this.options = Object.assign(
       {
@@ -49,20 +54,8 @@ class ScrollRestoreManager {
       },
       options
     );
-    let isTick;
-    this.handleScroll = debounce(() => {
-      if (isTick) {
-        return;
-      }
-      isTick = true;
-      window.requestAnimationFrame(() => {
-        this.savePostion();
-        isTick = false;
-      });
-    }, this.options.interval);
     window.addEventListener('scroll', this.handleScroll, {passive: true});
   }
-
   unobserve() {
     // @see: https://github.com/microsoft/TypeScript/issues/32912#issuecomment-522142969
     const options: AddEventListenerOptions & EventListenerOptions = { passive: true };
@@ -70,5 +63,4 @@ class ScrollRestoreManager {
       window.removeEventListener('scroll', this.handleScroll, options);
   }
 }
-
 export default new ScrollRestoreManager();

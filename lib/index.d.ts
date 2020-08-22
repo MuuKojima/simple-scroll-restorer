@@ -4,10 +4,11 @@ interface Options {
 declare class ScrollRestoreManager {
     private options;
     private handleScroll;
+    private isTick;
     constructor();
     private init;
     savePostion(): void;
-    getSavedPostion(): () => number | null;
+    getSavedPostion(): (() => number) | null;
     observe(options: Options): void;
     unobserve(): void;
 }
