@@ -57,8 +57,7 @@ class ScrollRestoreManager {
     window.addEventListener('scroll', this.handleScroll, {passive: true});
   }
   unobserve() {
-    // @see: https://github.com/microsoft/TypeScript/issues/32912#issuecomment-522142969
-    const options: AddEventListenerOptions & EventListenerOptions = { passive: true };
+    const options: AddEventListenerOptions = { passive: true };
     !!this.handleScroll &&
       window.removeEventListener('scroll', this.handleScroll, options);
   }
