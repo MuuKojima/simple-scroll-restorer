@@ -2,11 +2,13 @@ interface Options {
   interval: number
 }
 const DEFAULT_INTERVAL = 100;
-const debounce = (callback: (args: any[], interval: number) => void, interval: number) => {
+const debounce = (callback: (args: any[]) => void, interval: number) => {
   let timerId: number;
   return (...args: any[]) => {
     clearTimeout(timerId);
-    timerId = setTimeout(() => callback(args, interval));
+    timerId = setTimeout(() => {
+      callback(args)
+    }, interval);
   };
 };
 class ScrollRestoreManager {
@@ -15,7 +17,7 @@ class ScrollRestoreManager {
   private isTick: boolean;
   constructor() {
     this.options = {
-      interval: 0
+      interval: DEFAULT_INTERVAL
     };
     this.isTick = false;
     this.handleScroll = debounce(() => {
@@ -47,13 +49,7 @@ class ScrollRestoreManager {
     }
     return window.history.state.postion;
   }
-  observe(options: Options) {
-    this.options = Object.assign(
-      {
-        interval: DEFAULT_INTERVAL
-      },
-      options
-    );
+  observe() {
     window.addEventListener('scroll', this.handleScroll, {passive: true});
   }
   unobserve() {

@@ -1,6 +1,3 @@
-interface Options {
-    interval: number;
-}
 declare class ScrollRestoreManager {
     private options;
     private handleScroll;
@@ -9,7 +6,7 @@ declare class ScrollRestoreManager {
     private init;
     savePostion(): void;
     getSavedPostion(): (() => number) | null;
-    observe(options: Options): void;
+    observe(): void;
     unobserve(): void;
 }
 declare const _default: ScrollRestoreManager;
